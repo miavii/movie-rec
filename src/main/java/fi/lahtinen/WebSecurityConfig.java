@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/", "add", "save", "booklist", "delete/{id}").permitAll()
           .anyRequest().authenticated()
           .and()
-      .formLogin()
+      .formLogin() //how to make default page the booklist???
           .loginPage("/login")
           .defaultSuccessUrl("/booklist")
           .permitAll()

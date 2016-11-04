@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	<head>
+	<meta charset="ISO-8859-1" />
+	<title>Movie Recommendation List</title>
+	<!--  <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}"/> -->
+	</head>
+	<body>
+	<h1>Movie Recommendations</h1>
+	<div>
+		<h3> Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+<!--	<div>
+		<form method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+			 <input type="submit" value="Sign In" class="btn btn-danger"/> 
+		</form>
+	</div>-->
+	<table>
+		<tr>
+			<th>Year</th>
+			<th>Title</th>
+			<th>Genre</th>
+			<th>Summary</th>
+			<th>Rating</th>
+			<th>Status</th>
+			<th> </th>
+		</tr>
+		<tr th:each ="movie : ${movies}">
+			<td th:text="${movie.year}"></td>
+			<td th:text="${movie.title}"></td>
+			<td th:text="${movie.genre}"></td>
+			<td th:text="${movie.summary}"></td>
+			<td th:text="${movie.rating}"></td>
+			<td th:text="${movie.status}"></td>
+			<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger">Delete</a></td>
+		</tr>	
+	</table>
+	<a class="btn btn-success" href="/addMovie">Add Movie</a>
+	</body>
 </html>

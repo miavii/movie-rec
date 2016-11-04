@@ -1,5 +1,10 @@
 package fi.lahtinen.domain;
 
-public class GenreRepository {
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
+
+public interface GenreRepository extends CrudRepository<Genre, Long> {
+	List<Genre> findByGenreName(String genreName);
 }
