@@ -12,20 +12,19 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String title, summary, rating, status; //should summary be its own object? is there a better way to do rating and status???
-	private int year;
+	private String title, summary, status; //should summary be its own object? is there a better way to do rating and status???
+	private int year, rating;
 	@ManyToOne
 	@JoinColumn(name = "genreId")
 	private Genre genre;
 	public Movie() {}
 
-	public Movie(String title, Genre genre, String summary, int year, String status) {
+	public Movie(String title, Genre genre, String summary, int year) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.summary = summary;
 		this.year = year;
-		this.status = status;
 	}
 
 	public Long getId() {
@@ -60,11 +59,11 @@ public class Movie {
 		this.summary = summary;
 	}
 
-	public String getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
