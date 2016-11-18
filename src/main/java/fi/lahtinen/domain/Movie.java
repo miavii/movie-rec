@@ -14,17 +14,19 @@ public class Movie {
 	private Long id;
 	private String title, summary, status; //should summary be its own object? is there a better way to do rating and status???
 	private int year, rating;
+	private boolean approved = false;
 	@ManyToOne
 	@JoinColumn(name = "genreId")
 	private Genre genre;
 	public Movie() {}
 
-	public Movie(String title, Genre genre, String summary, int year) {
+	public Movie(String title, Genre genre, String summary, int year, boolean approved) {
 		super();
 		this.title = title;
 		this.genre = genre;
 		this.summary = summary;
 		this.year = year;
+		this.approved = approved;
 	}
 
 	public Long getId() {
@@ -83,11 +85,23 @@ public class Movie {
 		this.status = status;
 	}
 
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", summary=" + summary
-				+ ", rating=" + rating + ", status=" + status + ", year="
-				+ year + ", genre=" + genre + "]";
+				+ ", status=" + status + ", year=" + year + ", rating="
+				+ rating + ", approved=" + approved + ", genre=" + genre + "]";
 	}
+
+
+	
+	
 
 }

@@ -8,7 +8,7 @@
 	<body>
 		<h1>Suggest a movie!</h1>
 		<div>
-			<form th:object="${movie}" th:action="${save}" action="#" method="post">
+			<form th:object="${movie}" th:action="@{save}" action="#" method="post">
 				<label for="title">Movie Name</label>
 				<input type="text" id="title" th:field="*{title}" />
 				<div style="clear: both; display: block; height: 10px;"></div>
@@ -16,7 +16,7 @@
 				<input type="text" th:field="*{year}" />
 				<div style="clear: both; display: block; height: 10px;"></div>
 				<label for="summary">A short summary</label>
-				<input type="text" th:field="*{summary}" />
+				<textarea th:field="*{summary}"> </textarea>
 				<div style="clear: both; display: block; height: 10px;"></div>
 				<label for="genrelist">Genre</label>
 				<select id = "genrelist" th:field="*{genre}" class="form-control">

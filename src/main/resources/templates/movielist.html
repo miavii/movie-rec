@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<head>
-	<meta charset="ISO-8859-1" />
-	<title>Movie Recommendation List</title>
-	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+		<meta charset="ISO-8859-1" />
+		<title>Movie Recommendation List</title>
+		<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.css}"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<h1>Movie Recommendations</h1>
-	<div class="col-md-4">
-		<h3 th:inline="text"> Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-	</div>
-<!--	<div class="col-md-4" style="padding:20px 0">
-		<form method="post">
-			<input type="submit" value="Sign Out" class="btn btn-danger"/>
-			 <input type="submit" value="Sign In" class="btn btn-danger"/> 
-		</form>
-	</div>-->
-	<table class="table table-striped">
-		<tr>
-			<th>Year</th>
-			<th id="title">Title</th>
-			<th>Genre</th>
-			<th>Summary</th>
-			<th>Rating</th>
-			<th>Status</th>
-			<th> </th>
-		</tr>
-		<tr th:each ="movie : ${movies}">
-			<td th:text="${movie.year}"></td>
-			<td th:text="${movie.title}"></td>
-			<td th:text="${movie.genre.genreName}"></td>
-			<td th:text="${movie.summary}"></td>
-			<td sec:autorize="isAnonymous()" th:text="${movie.rating}"></td>
-			<td sec:autorize="isAnonymous()" th:text="${movie.status}"></td>
-			<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
-			<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
-		</tr>	
-	</table>
-	<a class="btn btn-success" href="/addMovie">Add Movie</a>
+		<h1 class="col-md-4">Movie Recommendations</h1>
+		<div class="col-md-4" >
+			<h3 th:inline="text" sec:authorize="isAuthenticated()"> Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+			<h3 sec:authorize="isAnonymous()" > Welcome Stranger</h3>
+			<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-danger btn-header"/>	
+			</form>
+				<a sec:authorize="isAnonymous()" href="login"><button class="btn btn-danger btn-header"> Login </button></a>
+		</div>
+		<table class="table table-striped" >
+			<tr>
+				<th>Year</th>
+				<th id="title">Title</th>
+				<th>Genre</th>
+				<th>Summary</th>
+				<th>Rating</th>
+				<th>Status</th>
+				<th sec:authorize="hasRole('ADMIN')"> </th>
+				<th sec:authorize="hasRole('ADMIN')"> </th>
+			</tr>
+			<tr th:each ="movie : ${movies}" th:if = "${movie.approved} eq true">
+				<td th:text="${movie.year}"></td>
+				<td th:text="${movie.title}"></td>
+				<td th:text="${movie.genre.genreName}"></td>
+				<td th:text="${movie.summary}"></td>
+				<td th:text="${movie.rating}"></td>
+				<td th:text="${movie.status}"></td>
+				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
+				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
+			</tr>	
+		</table>
+		<a class="btn btn-success optionBtn" href="/addMovie">Add Movie</a>
+		<table class="table table-striped" sec:authorize="hasRole('ADMIN')" >
+			<tr>
+				<th>Year</th>
+				<th id="title">Title</th>
+				<th>Genre</th>
+				<th>Summary</th>
+				<th>Rating</th>
+				<th>Status</th>
+				<th> </th>
+				<th> </th>
+			</tr>
+			<tr th:each ="movie : ${movies}" th:if = "${movie.approved} eq false">
+				<td th:text="${movie.year}"></td>
+				<td th:text="${movie.title}"></td>
+				<td th:text="${movie.genre.genreName}"></td>
+				<td th:text="${movie.summary}"></td>
+				<td th:text="${movie.rating}"></td>
+				<td th:text="${movie.status}"></td>
+				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
+				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
+			</tr>	
+		</table>
 	</body>
 </html>

@@ -52,28 +52,21 @@ public class MovieController {
 	@RequestMapping(value="/addMovie")
 	public String addMovie(Model model) {
 		model.addAttribute("movie", new Movie());
-		model.addAttribute("genre", gRepository.findAll());
-		return "addMovie";
+		model.addAttribute("genres", gRepository.findAll());
+		return "addmovie";
 	}
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String save(Movie movie) {
-		System.out.println("GENRE: " + movie.getGenre());
+		System.out.println("It's sabing");
 		repository.save(movie);
-		return "redirect:movielist";
+		return "redirect:movielist2";
 	}
 	@RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable("id") Long movieId, Model model){
 		Movie m = repository.findOne(movieId);
-		model.addAttribute("movie", m);		
-		System.out.println("GENRE: " + m.getGenre());
+		model.addAttribute("movie", m);
 		return "edit";
-	}
-	@RequestMapping(value="/update", method = RequestMethod.PATCH)
-	public String update(Movie movie) {
-		System.out.println("update GENRE: " + movie.getGenre());
-		repository.save(movie);
-		return "redirect:movielist";
 	}
 
 	@RequestMapping(value="/delete/{id}", method = RequestMethod.GET)

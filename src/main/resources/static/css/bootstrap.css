@@ -176,10 +176,21 @@ legend {
 textarea {
   overflow: auto;
 }
+/* Custom */
+.optionBtn {
+	margin-left: 5%;
+	margin-bottom: 20px !important;
+}
+.btn-header {
+	margin-top: -40px;
+	margin-right: 40px;
+	float: right;
+}
 optgroup {
   font-weight: bold;
 }
 table {
+  margin-left: 20px;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -2261,8 +2272,10 @@ th {
   text-align: left;
 }
 .table {
-  width: 100%;
-  max-width: 100%;
+  
+  width: 95%;
+  max-width: 95%;
+  margin: auto;
   margin-bottom: 20px;
 }
 .table > thead > tr > th,
