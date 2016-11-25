@@ -3,65 +3,68 @@
 	<head>
 		<meta charset="ISO-8859-1" />
 		<title>Movie Recommendation List</title>
- 		<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.css}"/>
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- 		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+ 		<link type="text/css" rel="stylesheet" th:href="@{css/custom.css}"/>
+		
 	</head>
 	<body>
-		<h1 class="col-md-4">Movie Recommendations</h1>
-		<div class="col-md-4" >
+		<h1 class="header">Movie Recommendations</h1>
+		<div class="header2" >
 			<h3 th:inline="text" sec:authorize="isAuthenticated()"> Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 			<h3 sec:authorize="isAnonymous()" > Welcome Stranger</h3>
 		</div>
-		<div class="col-md-4" >
+		<div class="header2" >
 			<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
 				<input type="submit" value="Sign Out" class="btn btn-danger"/>	
 			</form>
-				<a sec:authorize="isAnonymous()" href="login"><button class="btn btn-danger"> Login </button></a>
+				<a sec:authorize="isAnonymous()" href="login"><button class=""> Login </button></a>
+				
 		</div>
+		
 		<table class="table table-striped" >
+			<caption><h3 style="float:left">Suggested Movies</h3></caption>
 			<tr>
-				<th>Year</th>
+				<th class= "year-col">Year</th>
 				<th id="title">Title</th>
-				<th>Genre</th>
+				<th class="genre-col">Genre</th>
 				<th>Summary</th>
-				<th>Rating</th>
-				<th>Status</th>
-				<th sec:authorize="hasRole('ADMIN')"> </th>
-				<th sec:authorize="hasRole('ADMIN')"> </th>
+				<th class="rating-col">Rating</th>
+				<th class="status-col">Status</th>
+				<th sec:authorize="hasRole('ADMIN')" class="adminEdit"> </th>
+				<th sec:authorize="hasRole('ADMIN')" class="adminEdit"> </th>
 			</tr>
 			<tr th:each ="movie : ${movies}" th:if = "${movie.approved} eq true">
-				<td th:text="${movie.year}"></td>
-				<td th:text="${movie.title}"></td>
+				<td class= "year-col" th:text="${movie.year}"></td>
+				<td class="genre-col" th:text="${movie.title}"></td>
 				<td th:text="${movie.genre.genreName}"></td>
 				<td th:text="${movie.summary}"></td>
-				<td th:text="${movie.rating}"></td>
-				<td th:text="${movie.status}"></td>
-				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
-				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
+				<td class="rating-col" th:text="${movie.rating}"></td>
+				<td class="status-col" th:text="${movie.status}"></td>
+				<td sec:authorize="hasRole('ADMIN')" class="adminEdit"><a class="btn btn-action" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
+				<td sec:authorize="hasRole('ADMIN')" class="adminEdit"><a class="btn btn-action delete" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
 			</tr>	
 		</table>
-		<a class="btn btn-success optionBtn" href="/addMovie">Add Movie</a>
+		<a style="float:right" class="btn btn-function add" href="/addMovie">Add Movie</a>
 		<table class="table table-striped" sec:authorize="hasRole('ADMIN')" >
+			<caption><h3 style="float:left">Unapproved Suggestions</h3></caption>
 			<tr>
-				<th>Year</th>
+				<th class= "year-col">Year</th>
 				<th id="title">Title</th>
-				<th>Genre</th>
+				<th class="genre-col">Genre</th>
 				<th>Summary</th>
-				<th>Rating</th>
-				<th>Status</th>
-				<th> </th>
-				<th> </th>
+				<th class="rating-col">Rating</th>
+				<th class="status-col">Status</th>
+				<th class="adminEdit"> </th>
+				<th class="adminEdit"> </th>
 			</tr>
 			<tr th:each ="movie : ${movies}" th:if = "${movie.approved} eq false">
-				<td th:text="${movie.year}"></td>
+				<td class= "year-col" th:text="${movie.year}"></td>
 				<td th:text="${movie.title}"></td>
-				<td th:text="${movie.genre.genreName}"></td>
+				<td class="genre-col" th:text="${movie.genre.genreName}"></td>
 				<td th:text="${movie.summary}"></td>
-				<td th:text="${movie.rating}"></td>
-				<td th:text="${movie.status}"></td>
-				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
-				<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
+				<td class="rating-col" th:text="${movie.rating}"></td>
+				<td class="status-col" th:text="${movie.status}"></td>
+				<td sec:authorize="hasRole('ADMIN')" class="adminEdit"><a class="btn btn-action" th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
+				<td sec:authorize="hasRole('ADMIN')" class="adminEdit"><a class="btn btn-action delete" th:href="@{/delete/{id}(id=${movie.id})}">Delete</a></td>
 			</tr>	
 		</table>
 	</body>

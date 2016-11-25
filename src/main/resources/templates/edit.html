@@ -3,11 +3,12 @@
 		<head>
 		<meta charset="ISO-8859-1" />
 		<title th:inline="text"> Edit Movie</title>
+		<link type="text/css" rel="stylesheet" th:href="@{css/custom.css}"/>
 	</head>
 	<body>
-		<div th:object="${movie}">
-		<h1 th:inline="text"> Edit [[${movie.title}]] </h1>
-			<table class="currentMovie">
+		<div class="view" th:object="${movie}">
+		<h1 class="header" th:inline="text"> Edit [[${movie.title}]] </h1>
+			<table class="table">
 					<tr>
 						<th th:text="*{title}"> </th>
 						<th th:text="*{summary}"></th>
@@ -46,7 +47,7 @@
 					<option value="false">Not Approved</option>								
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>
-				<input type="submit" value="Update"></input>
+				<input class="btn btn-function" type="submit" value="Update"></input>
 			</form>
 		</div>
 	</body>

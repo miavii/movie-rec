@@ -34,7 +34,7 @@ public class MoviesApplication {
 			gRepository.save(new Genre("Action", "Shooty stuff"));
 			gRepository.save(new Genre("Romance", "Lovey stuff"));
 			gRepository.save(new Genre("Sci-fi", "Scifi stuff"));
-			repository.save(new Movie("Title", gRepository.findByGenreName("Comedy").get(0), "Summaru", 1233, true));
+			repository.save(new Movie("Title", gRepository.findByGenreName("Comedy").get(0), "Summary", 1233, true));
 			repository.save(new Movie("Title 2", gRepository.findByGenreName("Sci-fi").get(0), "Summaru", 1997, true));
 			repository.save(new Movie("Title 3", gRepository.findByGenreName("Action").get(0), "Summaru", 1980, true));
 			repository.save(new Movie("Title 4", gRepository.findByGenreName("Romance").get(0), "Summaru", 2010, true));

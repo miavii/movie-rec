@@ -3,21 +3,24 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Log in to manage movies </title>
-        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+        <link type="text/css" rel="stylesheet" href="/css/custom.css" th:href="@{css/custom.css}" />
     </head>
     <body>
-     <div class="col-md-4 col-md-offset-4">
-        <div class="alert alert-danger" th:if="${param.error}">
+     <div class="view">
+        <div class="" th:if="${param.error}">
             Invalid username and password.
         </div>
-        <div class="alert alert-warning" th:if="${param.logout}">
+        <div class="" th:if="${param.logout}">
             You have been logged out.
         </div>
+        <br/>
         <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username" class="form-control"/> </label></div>
-            <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
-            <div><input type="submit" value="Sign In" class="btn btn-success"/></div>
-            <br/><div><a href="movielist2">View movie list without logging in</a></div>
+            <div><label> User Name : <input type="text" name="username" class="textForm"/> </label></div>
+            <br/>
+            <div><label> Password: <input type="password" name="password" class="textForm"/> </label></div>
+            <br/>
+            <div><input style="float:left" type="submit" value="Sign In" class="btn btn-function" /></div>
+            <br/><div><a href="movielist2"> <button class="btn btn-function" type="button">View movie list without logging in </button></a></div>
         </form>
        </div>
     </body>

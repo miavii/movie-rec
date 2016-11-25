@@ -1,0 +1,101 @@
+@CHARSET "ISO-8859-1";
+body{
+	
+    margin: 5% 20% 0 20%;
+	font-family: Sans-serif;
+}
+
+.header {
+	text-align: center;
+}
+.header2 {
+	text-align: center;
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+table, th, td {
+	border-bottom: 1px solid #aaa;
+}
+
+th {
+	border-top: 1px solid #aaa;
+	height: 30px;
+	background-color: #E0FFDA
+	
+}
+th, td {
+	padding: 8px 10px 8px 10px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+
+.year-col {
+	max-width: 40px;
+}
+.rating-col {
+	max-width: 20px;
+	text-align: center;
+}
+.status-col {
+	max-width: 54px;
+}
+.genre-col{
+	max-width: 30px;
+}
+.adminEdit{
+	max-width: 20px;
+}
+.add {
+	float:left;
+}
+.delete {
+	margin-left: -10px;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.btn-action {
+	color: #222;
+	background-color: #B8EFAE;
+	border-color: #9DB193;
+}
+.btn-danger {
+	color: #fff;
+	margin-bottom: 15px;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+}
+.btn-function {
+	color: #222;
+    margin-bottom: 15px;
+    background-color: #FFFCB2;
+    border-color: #908E12;
+}
+.view {
+	max-width: 300px;
+}
+input {
+	float:right;
+}
+textarea {
+	width: 294px;
+	min-height: 50px;
+	margin-top: 10px;
+}
+a {
+	text-decoration:none;
+}
