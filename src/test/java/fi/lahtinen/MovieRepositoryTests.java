@@ -27,7 +27,7 @@ public class MovieRepositoryTests {
 	
 	@Test
 	public void createNewMovie() {
-		Movie movie = new Movie("Titanic", null, "Summaru", 2010, true);
+		Movie movie = new Movie("Jurassic Park", null, "Cloned Dinosaurs in a Theme Park", 1993, true);
 		repository.save(movie);
 		assertThat(movie.getId()).isNotNull();
 	}

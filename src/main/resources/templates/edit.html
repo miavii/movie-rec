@@ -24,7 +24,7 @@
 				<input type="hidden" id="title" th:field="*{genre}" />
 				<input type="hidden" id="title" th:field="*{year}" />
 				
-				<label for="rating">Rating</label>
+				<label for="rating">Rating: </label>
 				<select id="rating" th:field="*{rating}">
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -33,7 +33,7 @@
 					<option value="5">5</option>
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>
-				<label for="status">Current Status</label>
+				<label for="status">Current Status: </label>
 				<select id="status" th:field="*{status}">
 					<option value="Not Yet Seen">Not Yet Seen</option>
 					<option value="Watched">Watched</option>
@@ -41,7 +41,7 @@
 					<option value="Unfinished">Unfinished</option>
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>
-				<label for="approved">Approved</label>
+				<label for="approved">Approved: </label>
 				<select id = "approved" th:field="*{approved}" class="form-control">
 					<option value="true">Approve</option>
 					<option value="false">Not Approved</option>								

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="ISO-8859-1"/>
 		<title>Suggest a movie!</title>
-		<link type="text/css" rel="stylesheet" href="/css/custom.css" th:href="@{css/custom.css}" />
+		<link type="text/css" rel="stylesheet" href="../css/custom.css" th:href="@{css/custom.css}" />
 	</head>
 	<body>
 		<h1>Suggest a movie!</h1>
@@ -26,7 +26,7 @@
 							th:text="${genre.genreName}"/>							
 				</select>
 				<div style="clear: both; display: block; height: 10px;"></div>
-				<input type="submit" value="Submit"></input>
+				<input class = "btn btn-function" type="submit" value="Submit"></input>
 			</form>
 		</div>
 	</body>

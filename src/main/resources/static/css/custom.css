@@ -24,13 +24,13 @@ table, th, td {
 th {
 	border-top: 1px solid #aaa;
 	height: 30px;
-	background-color: #E0FFDA
+	background-color: #D8EBF1;
 	
 }
 th, td {
 	padding: 8px 10px 8px 10px;
 }
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #E4E9EA}
 
 .year-col {
 	max-width: 40px;
@@ -46,7 +46,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 	max-width: 30px;
 }
 .adminEdit{
-	max-width: 20px;
+	width: 20px;
 }
 .add {
 	float:left;
@@ -69,21 +69,21 @@ tr:nth-child(even){background-color: #f2f2f2}
 	border-radius: 4px;
 }
 .btn-action {
-	color: #222;
-	background-color: #B8EFAE;
-	border-color: #9DB193;
+	color: #415563;
+	background-color: #A9DAFD;
+	border-color: #8EB9D8;
 }
 .btn-danger {
-	color: #fff;
+	color: #9C3131;
 	margin-bottom: 15px;
-	background-color: #d9534f;
-	border-color: #d43f3a;
+	background-color: #F17F7F;
+	border-color: #C57F7F;
 }
 .btn-function {
-	color: #fff;
+	color: #154A0C;
     margin-bottom: 15px;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
+    background-color: #9DEA8E;
+    border-color: #74C565;
 }
 .view {
 	max-width: 300px;
